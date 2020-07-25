@@ -1,9 +1,9 @@
 import React from 'react';
 
-import DefaultLayout from '@globalComponents/_Layout/Default';
+import DefaultLayout from '@gComponents/_Layout/Default';
 
 import Sidebar from '@modules/aulas/components/Sidebar';
-import VideoPlayer from '@globalComponents/VideoPlayer';
+import VideoPlayer from '@gComponents/VideoPlayer';
 
 import CommentInVideo from '@modules/aulas/components/CommentInVideo';
 import LessonComments from '@modules/aulas/components/LessonComments';

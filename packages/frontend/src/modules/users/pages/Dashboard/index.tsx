@@ -1,6 +1,6 @@
 import React from 'react';
 
-import DefaultLayout from '@globalComponents/_Layout/Default';
+import DefaultLayout from '@gComponents/_Layout/Default';
 
 import { Container } from './styles';
 

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import DefaultLayout from '@globalComponents/_Layout/Default';
+import DefaultLayout from '@gComponents/_Layout/Default';
 import { Link } from 'react-router-dom';
 
 import api from '@shared/services/api';
@@ -7,7 +7,7 @@ import api from '@shared/services/api';
 import Yoda from '@assets/yoda.svg';
 
 import { useAuth } from '@shared/hooks/Auth';
-import MarkupParser from '@globalComponents/MarkupParser';
+import MarkupParser from '@gComponents/MarkupParser';
 import {
   Container,
   ContainerHeader,

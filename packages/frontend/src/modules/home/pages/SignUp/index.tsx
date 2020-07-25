@@ -5,7 +5,7 @@ import { Link, useHistory } from 'react-router-dom';
 import * as yup from 'yup';
 import { FormHandles } from '@unform/core';
 
-import Input from '@globalComponents/Input';
+import Input from '@gComponents/Input';
 
 import { useToast } from '@shared/hooks/Toasts';
 

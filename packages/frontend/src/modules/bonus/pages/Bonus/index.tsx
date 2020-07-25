@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
 
-import DefaultLayout from '@globalComponents/_Layout/Default';
+import DefaultLayout from '@gComponents/_Layout/Default';
 import { Link } from 'react-router-dom';
 import { FiVideo } from 'react-icons/fi';
 
 import api from '@shared/services/api';
 
-import VideoPlayer from '@globalComponents/VideoPlayer';
+import VideoPlayer from '@gComponents/VideoPlayer';
 import {
   Container,
   OverflowBonusHeight,

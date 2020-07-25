@@ -2,7 +2,7 @@ import React, { useCallback } from 'react';
 import { FiCornerUpLeft } from 'react-icons/fi';
 
 import { useAuth } from '@shared/hooks/Auth';
-import CodeInput from '@globalComponents/CodeInput';
+import CodeInput from '@gComponents/CodeInput';
 
 import { Form } from '@unform/web';
 import {

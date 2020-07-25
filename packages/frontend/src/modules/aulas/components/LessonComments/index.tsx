@@ -5,7 +5,7 @@ import ptBR from 'date-fns/locale/pt-BR';
 
 import api from '@shared/services/api';
 
-import MarkupParser from '@globalComponents/MarkupParser';
+import MarkupParser from '@gComponents/MarkupParser';
 
 import {
   Container,

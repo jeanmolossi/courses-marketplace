@@ -5,7 +5,7 @@ import { Form } from '@unform/web';
 import { FormHandles } from '@unform/core';
 import * as yup from 'yup';
 
-import Input from '@globalComponents/Input';
+import Input from '@gComponents/Input';
 
 import getValidationsErrors from '@shared/utils/getValidationErrors';
 

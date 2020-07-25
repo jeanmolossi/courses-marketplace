@@ -3,7 +3,7 @@
     "baseUrl": "./src",
     "paths": {
       "@modules/*": ["modules/*"],
-      "@globalComponents/*": ["shared/components/*"],
+      "@gComponents/*": ["shared/components/*"],
       "@shared/*": ["shared/*"],
       "@hooks/*": ["shared/hooks/*"],
       "@assets/*": ["assets/*"]
