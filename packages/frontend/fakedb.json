@@ -1,0 +1,601 @@
+{
+  "users": [
+    {
+      "id": "1",
+      "name": "Jean Carlos",
+      "email": "jean@email.com",
+      "password": "123456",
+      "avatar": "https://api.adorable.io/avatars/99/jeanCarlos.png"
+    },
+    {
+      "id": "2",
+      "name": "Jean Carlos Teste 2",
+      "email": "jean@teste.com",
+      "password": "123456",
+      "avatar": "https://api.adorable.io/avatars/99/jeanTeste2.png"
+    },
+    {
+      "id": "3",
+      "name": "Jean Molossi 3",
+      "email": "teste@email.com",
+      "password": "123456",
+      "avatar": "https://api.adorable.io/avatars/99/jeanTeste3.png"
+    },
+    {
+      "name": "Outro jean teste",
+      "email": "email@teste.com.br",
+      "password": "123456",
+      "avatar": "https://api.adorable.io/avatars/99/Outrojeanteste.png",
+      "id": "YvHLMoB"
+    }
+  ],
+  "classes": [
+    {
+      "id": "1",
+      "name": "Desenvolvedor React Fullstack"
+    }
+  ],
+  "modules": [
+    {
+      "id": "1",
+      "classId": "1",
+      "title": "Backend"
+    },
+    {
+      "id": "2",
+      "classId": "1",
+      "title": "Front-end"
+    },
+    {
+      "id": "3",
+      "classId": "1",
+      "title": "Primeiro projeto NodeJS"
+    },
+    {
+      "id": "4",
+      "classId": "1",
+      "title": "Primeiro projeto ReactJS"
+    },
+    {
+      "id": "5",
+      "classId": "1",
+      "title": "Primeiro projeto React Native"
+    },
+    {
+      "id": "6",
+      "classId": "1",
+      "title": "Testes unitários"
+    },
+    {
+      "id": "7",
+      "classId": "1",
+      "title": "Deploy de aplicação"
+    }
+  ],
+  "lessons": [
+    {
+      "id": "1",
+      "moduleId": "1",
+      "title": "Ambiente e conceitos",
+      "lessonVideo": "http://media.w3.org/2010/05/sintel/trailer_hd.ogv",
+      "engagement": {
+        "likes": [
+          {
+            "id": "1",
+            "userId": "1"
+          },
+          {
+            "id": "2",
+            "userId": "2"
+          }
+        ],
+        "comments": [
+          {
+            "id": "1",
+            "userId": "1",
+            "comment": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla semper, erat ac egestas vulputate, metus mi lobortis nisi, vel convallis turpis odio at nibh.\n\nNunc semper iaculis risus, a porta massa dictum id. Nulla a leo enim. Donec eleifend erat ac ante venenatis elementum. Pellentesque aliquam faucibus ornare.\n\nCurabitur at interdum turpis.",
+            "created_at": "2020-07-20T16:58"
+          },
+          {
+            "id": "2",
+            "userId": "2",
+            "comment": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla semper, erat ac egestas vulputate, metus mi lobortis nisi, vel convallis turpis odio at nibh.\n\nNunc semper iaculis risus, a porta massa dictum id. Nulla a leo enim. Donec eleifend erat ac ante venenatis elementum. Pellentesque aliquam faucibus ornare.\n\nCurabitur at interdum turpis.",
+            "created_at": "2020-07-20T13:58"
+          }
+        ]
+      }
+    },
+    {
+      "id": "2",
+      "moduleId": "1",
+      "title": "Ferramentas",
+      "lessonVideo": "http://media.w3.org/2010/05/video/movie_300.webm",
+      "engagement": {
+        "likes": [
+          {
+            "id": "1",
+            "userId": "3"
+          },
+          {
+            "id": "2",
+            "userId": "2"
+          }
+        ],
+        "comments": [
+          {
+            "id": "1",
+            "userId": "1",
+            "comment": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla semper, erat ac egestas vulputate, metus mi lobortis nisi, vel convallis turpis odio at nibh.\n\nNunc semper iaculis risus, a porta massa dictum id. Nulla a leo enim. Donec eleifend erat ac ante venenatis elementum. Pellentesque aliquam faucibus ornare.\n\nCurabitur at interdum turpis.",
+            "created_at": "2020-07-20T16:58"
+          },
+          {
+            "id": "2",
+            "userId": "2",
+            "comment": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla semper, erat ac egestas vulputate, metus mi lobortis nisi, vel convallis turpis odio at nibh.\n\nNunc semper iaculis risus, a porta massa dictum id. Nulla a leo enim. Donec eleifend erat ac ante venenatis elementum. Pellentesque aliquam faucibus ornare.\n\nCurabitur at interdum turpis.",
+            "created_at": "2020-07-20T13:58"
+          }
+        ]
+      }
+    },
+    {
+      "id": "3",
+      "moduleId": "1",
+      "title": "Primeiros passos",
+      "lessonVideo": "http://media.w3.org/2010/05/bunny/movie.mp4",
+      "engagement": {
+        "likes": [
+          {
+            "id": "1",
+            "userId": "1"
+          },
+          {
+            "id": "2",
+            "userId": "3"
+          }
+        ],
+        "comments": [
+          {
+            "id": "1",
+            "userId": "1",
+            "comment": "```js\nfunction () {\n  return null\n}\n```\n# Lorem ipsum dolor sit amet, consectetur adipiscing elit.\n\nNulla semper, erat ac egestas vulputate, metus mi lobortis nisi, vel convallis turpis odio at nibh.\n\nNunc semper iaculis risus, a porta massa dictum id. Nulla a leo enim. Donec eleifend erat ac ante venenatis elementum. Pellentesque aliquam faucibus ornare.\n\nCurabitur at interdum turpis.",
+            "created_at": "2020-07-20T16:58"
+          },
+          {
+            "id": "2",
+            "userId": "2",
+            "comment": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla semper, erat ac egestas vulputate, metus mi lobortis nisi, vel convallis turpis odio at nibh.\n\nNunc semper iaculis risus, a porta massa dictum id. Nulla a leo enim. Donec eleifend erat ac ante venenatis elementum. Pellentesque aliquam faucibus ornare.\n\nCurabitur at interdum turpis.",
+            "created_at": "2020-07-20T13:58"
+          }
+        ]
+      }
+    }
+  ],
+  "tags": [
+    {
+      "id": "1",
+      "name": "ReactJS"
+    },
+    {
+      "id": "2",
+      "name": "Styled-components"
+    },
+    {
+      "id": "3",
+      "name": "NodeJS"
+    },
+    {
+      "id": "4",
+      "name": "JavaScript"
+    },
+    {
+      "id": "5",
+      "name": "React native"
+    },
+    {
+      "id": "6",
+      "name": "Progressive web apps"
+    },
+    {
+      "id": "7",
+      "name": "PostgreSQL"
+    }
+  ],
+  "topics": [
+    {
+      "id": "1",
+      "userId": "1",
+      "title": "What skills do you need to be a UI designer ?",
+      "description": "```js\nfunction () {\n  return null\n}\n```\n## Lorem ipsum dolor sit amet, consectetur adipiscing elit.\n\nNulla semper, erat ac egestas vulputate, metus mi lobortis nisi, vel convallis turpis odio at nibh.\n\nNunc semper iaculis risus, a porta massa dictum id. Nulla a leo enim. Donec eleifend erat ac ante venenatis elementum. Pellentesque aliquam faucibus ornare.\n\nCurabitur at interdum turpis.",
+      "tags": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7"
+      ],
+      "solved": true,
+      "engagment": {
+        "views": 10325,
+        "count": {
+          "likes": 2,
+          "comments": 2
+        },
+        "likes": [
+          {
+            "id": "1",
+            "userId": "1"
+          },
+          {
+            "id": "2",
+            "userId": "2"
+          }
+        ],
+        "comments": [
+          {
+            "id": "1",
+            "userId": "1",
+            "comment": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla semper, erat ac egestas vulputate, metus mi lobortis nisi, vel convallis turpis odio at nibh.\n\nNunc semper iaculis risus, a porta massa dictum id. Nulla a leo enim. Donec eleifend erat ac ante venenatis elementum. Pellentesque aliquam faucibus ornare.\n\nCurabitur at interdum turpis.",
+            "created_at": "2020-07-20T16:58",
+            "nestedComments": [
+              {
+                "id": "1",
+                "userId": "2",
+                "comment": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla semper, erat ac egestas vulputate, metus mi lobortis nisi, vel convallis turpis odio at nibh.\n\nNunc semper iaculis risus, a porta massa dictum id. Nulla a leo enim. Donec eleifend erat ac ante venenatis elementum. Pellentesque aliquam faucibus ornare.\n\nCurabitur at interdum turpis.",
+                "created_at": "2020-07-20T16:58"
+              },
+              {
+                "id": "2",
+                "userId": "2",
+                "comment": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla semper, erat ac egestas vulputate, metus mi lobortis nisi, vel convallis turpis odio at nibh.\n\nNunc semper iaculis risus, a porta massa dictum id. Nulla a leo enim. Donec eleifend erat ac ante venenatis elementum. Pellentesque aliquam faucibus ornare.\n\nCurabitur at interdum turpis.",
+                "created_at": "2020-07-20T13:58"
+              }
+            ]
+          },
+          {
+            "id": "2",
+            "userId": "2",
+            "comment": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla semper, erat ac egestas vulputate, metus mi lobortis nisi, vel convallis turpis odio at nibh.\n\nNunc semper iaculis risus, a porta massa dictum id. Nulla a leo enim. Donec eleifend erat ac ante venenatis elementum. Pellentesque aliquam faucibus ornare.\n\nCurabitur at interdum turpis.",
+            "created_at": "2020-07-20T13:58",
+            "nestedComments": [
+              {
+                "id": "1",
+                "userId": "2",
+                "comment": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla semper, erat ac egestas vulputate, metus mi lobortis nisi, vel convallis turpis odio at nibh.\n\nNunc semper iaculis risus, a porta massa dictum id. Nulla a leo enim. Donec eleifend erat ac ante venenatis elementum. Pellentesque aliquam faucibus ornare.\n\nCurabitur at interdum turpis.",
+                "created_at": "2020-07-20T16:58"
+              },
+              {
+                "id": "2",
+                "userId": "2",
+                "comment": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla semper, erat ac egestas vulputate, metus mi lobortis nisi, vel convallis turpis odio at nibh.\n\nNunc semper iaculis risus, a porta massa dictum id. Nulla a leo enim. Donec eleifend erat ac ante venenatis elementum. Pellentesque aliquam faucibus ornare.\n\nCurabitur at interdum turpis.",
+                "created_at": "2020-07-20T13:58"
+              }
+            ]
+          }
+        ]
+      },
+      "badge": {
+        "label": "New",
+        "labelClass": "redBadge"
+      },
+      "bestReply": true,
+      "votes": {
+        "up": {
+          "count": 90,
+          "users": [
+            "1",
+            "2"
+          ]
+        },
+        "down": {
+          "count": 1,
+          "users": [
+            "3"
+          ]
+        }
+      }
+    },
+    {
+      "id": "2",
+      "userId": "2",
+      "title": "What skills do you need to be a UI designer ?",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla semper, erat ac egestas vulputate, metus mi lobortis nisi, vel convallis turpis odio at nibh.\n\nNunc semper iaculis risus, a porta massa dictum id. Nulla a leo enim. Donec eleifend erat ac ante venenatis elementum. Pellentesque aliquam faucibus ornare.\n\nCurabitur at interdum turpis.",
+      "tags": [
+        "1",
+        "3"
+      ],
+      "engagment": {
+        "views": 10325,
+        "count": {
+          "likes": 2410,
+          "comments": 290
+        },
+        "likes": [
+          {
+            "id": "1",
+            "userId": "1"
+          },
+          {
+            "id": "2",
+            "userId": "2"
+          }
+        ],
+        "comments": [
+          {
+            "id": "1",
+            "userId": "1",
+            "comment": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla semper, erat ac egestas vulputate, metus mi lobortis nisi, vel convallis turpis odio at nibh.\n\nNunc semper iaculis risus, a porta massa dictum id. Nulla a leo enim. Donec eleifend erat ac ante venenatis elementum. Pellentesque aliquam faucibus ornare.\n\nCurabitur at interdum turpis.",
+            "created_at": "2020-07-20T16:58"
+          },
+          {
+            "id": "2",
+            "userId": "2",
+            "comment": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla semper, erat ac egestas vulputate, metus mi lobortis nisi, vel convallis turpis odio at nibh.\n\nNunc semper iaculis risus, a porta massa dictum id. Nulla a leo enim. Donec eleifend erat ac ante venenatis elementum. Pellentesque aliquam faucibus ornare.\n\nCurabitur at interdum turpis.",
+            "created_at": "2020-07-20T13:58"
+          }
+        ]
+      },
+      "badge": {
+        "label": "Hot",
+        "labelClass": "yellowBadge"
+      },
+      "votes": {
+        "up": {
+          "count": 90,
+          "users": [
+            "1",
+            "2"
+          ]
+        },
+        "down": {
+          "count": 1,
+          "users": [
+            "3"
+          ]
+        }
+      }
+    },
+    {
+      "id": "3",
+      "userId": "3",
+      "title": "What skills do you need to be a UI designer ?",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla semper, erat ac egestas vulputate, metus mi lobortis nisi, vel convallis turpis odio at nibh.\n\nNunc semper iaculis risus, a porta massa dictum id. Nulla a leo enim. Donec eleifend erat ac ante venenatis elementum. Pellentesque aliquam faucibus ornare.\n\nCurabitur at interdum turpis.",
+      "tags": [
+        "1",
+        "3"
+      ],
+      "engagment": {
+        "views": 10325,
+        "count": {
+          "likes": 2410,
+          "comments": 290
+        },
+        "likes": [
+          {
+            "id": "1",
+            "userId": "1"
+          },
+          {
+            "id": "2",
+            "userId": "2"
+          }
+        ],
+        "comments": [
+          {
+            "id": "1",
+            "userId": "1",
+            "comment": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla semper, erat ac egestas vulputate, metus mi lobortis nisi, vel convallis turpis odio at nibh.\n\nNunc semper iaculis risus, a porta massa dictum id. Nulla a leo enim. Donec eleifend erat ac ante venenatis elementum. Pellentesque aliquam faucibus ornare.\n\nCurabitur at interdum turpis.",
+            "created_at": "2020-07-20T16:58",
+            "nestedComments": [
+              {
+                "id": "1",
+                "userId": "2",
+                "comment": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla semper, erat ac egestas vulputate, metus mi lobortis nisi, vel convallis turpis odio at nibh.\n\nNunc semper iaculis risus, a porta massa dictum id. Nulla a leo enim. Donec eleifend erat ac ante venenatis elementum. Pellentesque aliquam faucibus ornare.\n\nCurabitur at interdum turpis.",
+                "created_at": "2020-07-20T16:58"
+              },
+              {
+                "id": "2",
+                "userId": "2",
+                "comment": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla semper, erat ac egestas vulputate, metus mi lobortis nisi, vel convallis turpis odio at nibh.\n\nNunc semper iaculis risus, a porta massa dictum id. Nulla a leo enim. Donec eleifend erat ac ante venenatis elementum. Pellentesque aliquam faucibus ornare.\n\nCurabitur at interdum turpis.",
+                "created_at": "2020-07-20T13:58"
+              }
+            ]
+          },
+          {
+            "id": "2",
+            "userId": "2",
+            "comment": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla semper, erat ac egestas vulputate, metus mi lobortis nisi, vel convallis turpis odio at nibh.\n\nNunc semper iaculis risus, a porta massa dictum id. Nulla a leo enim. Donec eleifend erat ac ante venenatis elementum. Pellentesque aliquam faucibus ornare.\n\nCurabitur at interdum turpis.",
+            "created_at": "2020-07-20T13:58"
+          }
+        ]
+      },
+      "votes": {
+        "up": {
+          "count": 90,
+          "users": [
+            "1",
+            "2"
+          ]
+        },
+        "down": {
+          "count": 1,
+          "users": [
+            "3"
+          ]
+        }
+      }
+    }
+  ],
+  "bonus": [
+    {
+      "id": "1",
+      "name": "Workshop de UI/UX",
+      "duration": "01:02:32",
+      "bonusVideo": "http://media.w3.org/2010/05/sintel/trailer_hd.ogv"
+    },
+    {
+      "id": "2",
+      "name": "Workshop de UI/UX",
+      "duration": "01:02:32",
+      "bonusVideo": "http://media.w3.org/2010/05/bunny/movie.mp4"
+    },
+    {
+      "id": "3",
+      "name": "Workshop de UI/UX",
+      "duration": "01:02:32",
+      "bonusVideo": "http://media.w3.org/2010/05/sintel/trailer_hd.ogv"
+    },
+    {
+      "id": "4",
+      "name": "Workshop de UI/UX",
+      "duration": "01:02:32",
+      "bonusVideo": "http://media.w3.org/2010/05/bunny/movie.mp4"
+    },
+    {
+      "id": "5",
+      "name": "Workshop de UI/UX",
+      "duration": "01:02:32",
+      "bonusVideo": "http://media.w3.org/2010/05/sintel/trailer_hd.ogv"
+    },
+    {
+      "id": "6",
+      "name": "Workshop de UI/UX",
+      "duration": "01:02:32",
+      "bonusVideo": "http://media.w3.org/2010/05/bunny/movie.mp4"
+    },
+    {
+      "id": "7",
+      "name": "Workshop de UI/UX",
+      "duration": "01:02:32",
+      "bonusVideo": "http://media.w3.org/2010/05/sintel/trailer_hd.ogv"
+    },
+    {
+      "id": "8",
+      "name": "Workshop de UI/UX",
+      "duration": "01:02:32",
+      "bonusVideo": "http://media.w3.org/2010/05/bunny/movie.mp4"
+    }
+  ],
+  "notification": [
+    {
+      "id": "1",
+      "type": "forum",
+      "userId": "1",
+      "text": "Você tem um tópico respondido no fórum",
+      "read": false,
+      "created_at": "2020-07-23T14:17:00"
+    },
+    {
+      "id": "2",
+      "type": "lesson",
+      "userId": "1",
+      "text": "Uma aula, de seus modulos, foi atualizada",
+      "read": true,
+      "created_at": "2020-07-20T16:58"
+    },
+    {
+      "id": "3",
+      "type": "lesson",
+      "userId": "1",
+      "text": "Uma aula, de seus modulos, foi atualizada",
+      "read": true,
+      "created_at": "2020-07-20T16:58"
+    },
+    {
+      "id": "4",
+      "type": "forum",
+      "userId": "1",
+      "text": "Você tem uma resposta em um tópico no fórum",
+      "read": true,
+      "created_at": "2020-07-20T16:58"
+    },
+    {
+      "id": "5",
+      "type": "forum",
+      "userId": "1",
+      "text": "Você tem um tópico respondido no fórum",
+      "read": true,
+      "created_at": "2020-07-20T16:58"
+    },
+    {
+      "id": "6",
+      "type": "lesson",
+      "userId": "1",
+      "text": "Uma aula, de seus modulos, foi atualizada",
+      "read": true,
+      "created_at": "2020-07-20T16:58"
+    },
+    {
+      "id": "7",
+      "type": "lesson",
+      "userId": "1",
+      "text": "Uma aula, de seus modulos, foi atualizada",
+      "read": true,
+      "created_at": "2020-07-20T16:58"
+    },
+    {
+      "id": "8",
+      "type": "forum",
+      "userId": "1",
+      "text": "Você tem uma resposta em um tópico no fórum",
+      "read": true,
+      "created_at": "2020-07-20T16:58"
+    }
+  ],
+  "usersProgress": [
+    {
+      "id": "1",
+      "userId": "1",
+      "lessonsProgress": [
+        {
+          "id": "1",
+          "lesson": "1",
+          "progress": 100
+        },
+        {
+          "id": "2",
+          "lesson": "2",
+          "progress": 90
+        },
+        {
+          "id": "3",
+          "lesson": "3",
+          "progress": 78
+        },
+        {
+          "id": "4",
+          "lesson": "4",
+          "progress": 18
+        }
+      ]
+    },
+    {
+      "id": "2",
+      "userId": "2",
+      "lessonsProgress": [
+        {
+          "id": "1",
+          "lesson": "1",
+          "progress": 100
+        },
+        {
+          "id": "2",
+          "lesson": "2",
+          "progress": 100
+        },
+        {
+          "id": "3",
+          "lesson": "3",
+          "progress": 28
+        },
+        {
+          "id": "4",
+          "lesson": "4",
+          "progress": 18
+        }
+      ]
+    }
+  ],
+  "sessions": []
+}

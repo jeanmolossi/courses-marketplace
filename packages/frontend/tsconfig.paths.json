@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "baseUrl": "./src",
+    "paths": {
+      "@modules/*": ["modules/*"],
+      "@globalComponents/*": ["shared/components/*"],
+      "@shared/*": ["shared/*"],
+      "@hooks/*": ["shared/hooks/*"],
+      "@assets/*": ["assets/*"]
+    },
+  }
+}

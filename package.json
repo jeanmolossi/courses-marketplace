@@ -1,0 +1,13 @@
+{
+  "name": "courses-marketplace",
+  "version": "1.0.0",
+  "main": "index.js",
+  "private": true,
+  "workspaces": {
+    "packages": [
+      "packages/*"
+    ]
+  },
+  "author": "Jean Carlos <jean.carlosmolossi@gmail.com>",
+  "license": "MIT"
+}
