@@ -30,10 +30,18 @@ export const VideoControls = styled.div`
   align-items: center;
 
   margin-top: 24px;
+
+  @media screen and (max-width: 787px) {
+    flex-direction: column;
+  }
 `;
 
 export const LeftControls = styled.div`
   display: flex;
+
+  @media screen and (max-width: 787px) {
+    margin-bottom: 16px;
+  }
 `;
 
 export const TimerControls = styled.div`

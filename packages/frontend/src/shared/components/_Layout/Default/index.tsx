@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Header from '@globalComponents/Header';
+import Header from '@gComponents/Header';
 
 import { Container } from './styles';
 

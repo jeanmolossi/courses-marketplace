@@ -5,6 +5,10 @@ export const Container = styled.div`
   flex-direction: column;
 
   padding-right: 30px;
+
+  @media screen and (max-width: 787px) {
+    padding: 8px;
+  }
 `;
 
 export const VideoHeader = styled.h1`

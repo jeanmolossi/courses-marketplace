@@ -31,13 +31,13 @@ export const LikeButton = styled.button.attrs({ type: 'button' })<LikeButton>`
   /* background: var(--oliveBlue); */
 
   ${props =>
-    props.alreadyLike &&
+    Boolean(props.alreadyLike) &&
     css`
       svg {
         transform: scale(1);
 
         > path {
-          fill: var(--salmoon);
+          fill: var(--salmoon) !important;
         }
       }
     `}

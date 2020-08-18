@@ -1,10 +1,10 @@
 import React, { useCallback } from 'react';
 import { FiCornerUpLeft } from 'react-icons/fi';
+import { Form } from '@unform/web';
 
 import { useAuth } from '@shared/hooks/Auth';
 import CodeInput from '@gComponents/CodeInput';
 
-import { Form } from '@unform/web';
 import {
   Container,
   CommentBox,
@@ -28,7 +28,7 @@ const CommentInVideo: React.FC = () => {
 
       <CommentBox>
         <AvatarImage>
-          <img src={user.avatar} alt={user.name} />
+          <img src={user.avatarURL} alt={user.name} />
         </AvatarImage>
         <Form onSubmit={handleSubmitComment}>
           <TextCommentBox>

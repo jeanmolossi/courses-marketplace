@@ -2,10 +2,24 @@ import React, { useCallback, useState } from 'react';
 import { FiHeart } from 'react-icons/fi';
 import { useSpring, animated } from 'react-spring';
 
+import api from '@shared/services/api';
+import { useAuth } from '@shared/hooks/Auth';
 import { LikeButton } from './styles';
 
-const LikeButtonComponent: React.FC = () => {
-  const [alreadyLike, setAlreadyLike] = useState(false);
+interface LikeButtonProps {
+  containerStyles?: any;
+  liked?: boolean | string;
+  topicId?: string;
+  lessonId?: string;
+}
+
+const LikeButtonComponent: React.FC<LikeButtonProps> = ({
+  liked = false,
+  topicId,
+  lessonId,
+}) => {
+  const { user } = useAuth();
+  const [alreadyLike, setAlreadyLike] = useState(liked);
 
   const { x } = useSpring({
     from: { x: 0 },
@@ -13,17 +27,46 @@ const LikeButtonComponent: React.FC = () => {
     config: { duration: 500 },
   });
 
-  const handleLikeDislike = useCallback(
-    likeData => {
-      setAlreadyLike(!alreadyLike);
-      console.log(likeData);
+  const handleDispatchLikeTopic = useCallback(
+    payload => {
+      if (!alreadyLike) {
+        api.post(`likes/like`, { topicId: payload }).then(({ data }) => {
+          if (data.id) {
+            setAlreadyLike(!alreadyLike);
+          }
+        });
+      } else {
+        api
+          .delete(`likes/unlike`, {
+            params: {
+              topicId: payload,
+              userId: user.id,
+            },
+          })
+          .then(({ data }) => {
+            if (data) {
+              setAlreadyLike(!alreadyLike);
+            }
+          });
+      }
     },
-    [setAlreadyLike, alreadyLike],
+    [alreadyLike, user.id],
   );
+
+  const handleLikeDislike = useCallback(() => {
+    if (topicId) {
+      handleDispatchLikeTopic(topicId);
+      return;
+    }
+    if (lessonId) {
+      setAlreadyLike(!alreadyLike);
+    }
+  }, [setAlreadyLike, alreadyLike, topicId, lessonId, handleDispatchLikeTopic]);
+
   return (
     <LikeButton
-      alreadyLike={Number(alreadyLike)}
-      onClick={() => handleLikeDislike(2)}
+      alreadyLike={Number(!!alreadyLike)}
+      onClick={() => handleLikeDislike()}
     >
       Curtir{' '}
       <animated.div

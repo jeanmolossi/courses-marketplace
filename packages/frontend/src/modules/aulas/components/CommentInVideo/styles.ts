@@ -7,6 +7,10 @@ export const Container = styled.div`
   > h3 {
     margin: 24px 0;
   }
+
+  @media screen and (max-width: 787px) {
+    display: none;
+  }
 `;
 
 export const CommentBox = styled.div`

@@ -16,6 +16,10 @@ export const Container = styled.div`
   flex-direction: column;
 
   width: 280px;
+
+  @media screen and (max-width: 787px) {
+    width: 100%;
+  }
 `;
 
 export const SidebarHeader = styled.div`

@@ -1,14 +1,29 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
+import { FiX, FiMenu } from 'react-icons/fi';
 
 import Notifications from './Notifications';
 import Profile from './Profile';
 
-import { Container, HeaderLogo, ProfileAndNotificationSide } from './styles';
+import {
+  Container,
+  CloseButton,
+  OpenMenuButton,
+  HeaderLogo,
+  ProfileAndNotificationSide,
+} from './styles';
 
 const Header: React.FC = () => {
+  const [closed, setClosed] = useState(true);
+
   return (
-    <Container>
+    <Container closed={Number(closed)}>
+      <CloseButton onClick={() => setClosed(!closed)}>
+        <FiX />
+      </CloseButton>
+      <OpenMenuButton onClick={() => setClosed(false)}>
+        <FiMenu />
+      </OpenMenuButton>
       <HeaderLogo>CodeLearn</HeaderLogo>
       <ul>
         <li>

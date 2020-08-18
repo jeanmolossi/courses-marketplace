@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 
 import api from '@shared/services/api';
 
+import { useParams } from 'react-router-dom';
 import { Container, VideoHeader, VideoContainer } from './styles';
 import VideoComponent from './VideoComponent';
 
@@ -27,27 +28,27 @@ interface Lesson {
   id: string;
   moduleId: string;
   title: string;
-  lessonVideo: string;
+  videoURL: string;
   engagement: EngagementLesson;
 }
 
 const VideoPlayer: React.FC = () => {
-  const lessonId = 3;
+  const { moduleId, lessonId } = useParams();
 
   const [lesson, setLesson] = useState({} as Lesson);
 
   useEffect(() => {
-    api.get(`lessons/${lessonId}`).then(response => {
-      console.log(response.data);
+    api.get(`lessons/index/${lessonId}`).then(response => {
+      console.log(response.data, '>> RESPONSE OF LESSONS');
       setLesson(response.data);
     });
-  }, []);
+  }, [moduleId, lessonId]);
 
   return (
     <Container>
       <VideoHeader>{lesson.title}</VideoHeader>
       <VideoContainer>
-        <VideoComponent videoSource={lesson.lessonVideo} />
+        <VideoComponent videoSource={lesson.videoURL} />
       </VideoContainer>
     </Container>
   );

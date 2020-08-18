@@ -9,12 +9,10 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 `cd packages/frontend`
 
 &&
-using yarn:
-`yarn && yarn start`
 
-or
-using npm
-`npm && npm start`
+using yarn: `yarn && yarn server` & in another terminal instance `yarn start`
+
+or using npm `npm && npm server` & in another terminal instance `npm start`
 
 ## Learn More
 

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
+import { useParams } from 'react-router-dom';
 import { formatDistance, parseISO } from 'date-fns';
 import ptBR from 'date-fns/locale/pt-BR';
 
@@ -38,16 +39,19 @@ interface User {
 }
 
 const LessonComments: React.FC = () => {
-  const lessonId = 3;
+  const { lessonId } = useParams();
 
   const [comments, setComments] = useState([] as Comment[]);
 
   useEffect(() => {
     let users: User[];
-    api.get(`users`).then(response => {
+    api.get(`users/show`).then(response => {
       users = response.data;
     });
-    api.get(`lessons/${lessonId}`).then(response => {
+
+    if (!lessonId) return;
+
+    api.get(`lessons/index/${lessonId}`).then(response => {
       const commentsFormatted = response.data.engagement.comments.map(
         (c: Comment) => {
           const parsedDate = parseISO(c.created_at);
@@ -76,7 +80,7 @@ const LessonComments: React.FC = () => {
       });
       setComments(commentsWithUser);
     });
-  }, []);
+  }, [lessonId]);
 
   return (
     <Container>

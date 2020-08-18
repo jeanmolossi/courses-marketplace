@@ -1,19 +1,52 @@
 import styled from 'styled-components';
-import Markdown from 'markdown-to-jsx';
-import { monokaiSublime as theme } from 'react-syntax-highlighter/dist/esm/styles/hljs';
 
-export const MarkdownText = styled(Markdown)`
+export const Container = styled.div`
+  margin: 16px 0;
+
   h1,
   h2,
   h3,
   h4,
   h5,
-  h6,
-  p,
-  pre,
-  code {
+  p {
     margin: 16px 0;
   }
-`;
 
-export const styles = theme;
+  ul,
+  ol {
+    margin: 20px;
+  }
+
+  ul {
+    list-style: initial;
+  }
+
+  pre {
+    padding: 1.5em;
+    border-radius: 6px;
+  }
+
+  li {
+    margin: 8px 0;
+  }
+
+  li code,
+  p code {
+    background: #ffffff30;
+    padding: 3px 6px;
+  }
+
+  p img {
+    width: 100%;
+    max-width: 600px;
+    object-fit: cover;
+  }
+
+  p a {
+    color: var(--oliveBlue);
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+`;

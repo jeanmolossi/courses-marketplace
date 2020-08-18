@@ -1,8 +1,12 @@
 import React, { useRef, useEffect, useState, useCallback } from 'react';
 import { MdReplay10, MdForward10, MdFastForward } from 'react-icons/md';
 import { FiToggleLeft } from 'react-icons/fi';
+// import { useParams } from 'react-router-dom';
+import Hls from 'hls.js';
 
-import LikeButtonComponent from '@globalComponents/LikeButton';
+// import LikeButtonComponent from '@gComponents/LikeButton';
+
+import encryptVideoUrl from '@shared/utils/encryptVideo';
 
 import {
   Container,
@@ -21,6 +25,7 @@ interface VideoComponentProps {
 
 const VideoComponent: React.FC<VideoComponentProps> = ({ videoSource }) => {
   const video = useRef({} as HTMLVideoElement);
+  // const { lessonId } = useParams();
 
   const [autoplay, setAutoplay] = useState(() => {
     const isAutoplay = localStorage.getItem('@CodeLearn:autoplay');
@@ -40,19 +45,30 @@ const VideoComponent: React.FC<VideoComponentProps> = ({ videoSource }) => {
   }, [autoplay]);
 
   const handleReplay10 = useCallback(() => {
-    video.current.currentTime -= 10;
+    // video.current.currentTime -= 10;
   }, []);
 
   const handleForward10 = useCallback(() => {
-    video.current.currentTime += 10;
+    // video.current.currentTime += 10;
   }, []);
 
   const handleChangeVideoSpeed = useCallback(speed => {
-    video.current.playbackRate = speed;
+    // video.current.playbackRate = speed;
   }, []);
 
   useEffect(() => {
-    video.current.src = videoSource;
+    // encryptVideoUrl.load(videoSource, video);
+
+    if (videoSource) {
+      if (Hls.isSupported() && video.current) {
+        const hls = new Hls();
+        hls.loadSource(videoSource);
+        hls.attachMedia(video.current);
+        hls.on(Hls.Events.MANIFEST_PARSED, function () {
+          video.current.play();
+        });
+      }
+    }
   }, [videoSource]);
 
   return (
@@ -100,7 +116,7 @@ const VideoComponent: React.FC<VideoComponentProps> = ({ videoSource }) => {
         </LeftControls>
 
         <RightControlsContent>
-          <LikeButtonComponent />
+          {/* <LikeButtonComponent lessonId={lessonId} /> */}
 
           <AutoPlayButton
             isAutoplay={Number(autoplay)}

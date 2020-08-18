@@ -5,6 +5,10 @@ export const Container = styled.div`
   > h3 {
     margin: 19px 0;
   }
+
+  @media screen and (max-width: 787px) {
+    display: none;
+  }
 `;
 
 export const SingleComment = styled.div`

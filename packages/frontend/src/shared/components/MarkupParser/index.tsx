@@ -1,14 +1,9 @@
 import React from 'react';
+import ReactMarkdown from 'react-markdown';
 
-import SyntaxHighlighter from 'react-syntax-highlighter';
+import { Container } from './styles';
 
-import { highlight, languages } from 'prismjs';
-
-import 'prismjs/components/prism-markup';
-import 'prismjs/components/prism-css';
-import 'prismjs/themes/prism-dark.css';
-
-import { MarkdownText, styles } from './styles';
+import CodeBlock from './CodeBlock';
 
 interface MarkupProps {
   source: string;
@@ -16,22 +11,9 @@ interface MarkupProps {
 
 const MarkupParser: React.FC<MarkupProps> = ({ source }) => {
   return (
-    <MarkdownText
-      options={{
-        overrides: {
-          code: {
-            component: SyntaxHighlighter,
-            props: {
-              highlight: (c: string) =>
-                highlight(c, languages.markup, 'markup'),
-              style: styles,
-            },
-          },
-        },
-      }}
-    >
-      {source}
-    </MarkdownText>
+    <Container>
+      <ReactMarkdown renderers={{ code: CodeBlock }} source={source} />
+    </Container>
   );
 };
 

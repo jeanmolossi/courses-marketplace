@@ -45,6 +45,10 @@ export const BellButton = styled.button<BellButtonProps>`
         background: var(--salmoon);
       }
     `}
+
+  @media screen and (max-width: 787px) {
+    position: unset;
+  }
 `;
 
 interface Dropdownprops {
@@ -92,5 +96,40 @@ export const NotificationsDropDown = styled.div<Dropdownprops>`
     background: var(--lightGray);
 
     transform: rotateZ(45deg);
+  }
+
+  @media screen and (max-width: 787px) {
+    top: 0;
+    left: 0;
+
+    z-index: 4;
+
+    position: fixed;
+
+    transform: translateX(100%);
+
+    flex: 1;
+    width: 100%;
+    height: 100%;
+
+    transition: all 0.2s;
+
+    ${props => props.isOpened && 'transform: translateX(0%);'}
+  }
+`;
+
+export const CloseButton = styled.button.attrs({ type: 'button' })`
+  display: none;
+  background: none;
+  color: var(--white);
+  border: 0;
+  font-size: 24pt;
+
+  top: 20px;
+  right: 20px;
+
+  @media screen and (max-width: 787px) {
+    display: block;
+    position: absolute;
   }
 `;

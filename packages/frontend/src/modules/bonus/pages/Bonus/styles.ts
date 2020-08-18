@@ -19,6 +19,10 @@ export const OverflowBonusHeight = styled.div`
   width: 100%;
   height: 150px;
   overflow: hidden;
+
+  @media screen and (max-width: 787px) {
+    height: auto !important;
+  }
 `;
 
 export const BonusList = styled.div`
@@ -31,6 +35,10 @@ export const BonusList = styled.div`
   height: 100vw;
 
   overflow: hidden;
+
+  @media screen and (max-width: 787px) {
+    height: auto !important;
+  }
 `;
 
 export const BonusListContent = styled.div`
@@ -66,6 +74,13 @@ export const BonusListContent = styled.div`
     width: 5px;
     position: absolute;
   }
+
+  @media screen and (max-width: 787px) {
+    width: auto;
+    transform: rotateZ(0) translateX(0%) !important;
+    flex-direction: row;
+    justify-content: flex-start;
+  }
 `;
 
 export const BonusCard = styled.div`
@@ -78,8 +93,11 @@ export const BonusCard = styled.div`
   width: 250px;
   height: 250px;
   margin: 10px;
-  /* margin-bottom: 170px; */
-  /* margin-top: 90px; */
+
+  @media screen and (max-width: 787px) {
+    height: auto;
+    transform: rotateZ(0) !important;
+  }
 `;
 
 export const TheCard = styled.div`

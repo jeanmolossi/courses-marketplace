@@ -1,4 +1,8 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
+
+interface DropdownMenuProps {
+  connectionStatus?: 'Offline' | 'Online';
+}
 
 export const Container = styled.button.attrs({ type: 'button' })`
   position: relative;
@@ -13,6 +17,17 @@ export const Container = styled.button.attrs({ type: 'button' })`
   &:hover > div:last-child {
     visibility: visible;
     opacity: 1;
+  }
+
+  @media screen and (max-width: 787px) {
+    margin-bottom: 18px;
+    position: unset;
+
+    &:active > div:last-child,
+    &:focus > div:last-child,
+    &:hover > div:last-child {
+      transform: translateX(0);
+    }
   }
 `;
 
@@ -35,7 +50,7 @@ export const ProfileInfo = styled.div`
   }
 `;
 
-export const DropdownMenu = styled.div`
+export const DropdownMenu = styled.div<DropdownMenuProps>`
   position: absolute;
   z-index: 3;
 
@@ -94,6 +109,15 @@ export const DropdownMenu = styled.div`
     margin-right: 8px;
   }
 
+  ${props =>
+    !props.connectionStatus || props.connectionStatus === 'Offline'
+      ? css`
+          > span::before {
+            background: var(--salmoon) !important;
+          }
+        `
+      : ''}
+
   > div {
     display: flex;
     place-items: center;
@@ -107,5 +131,14 @@ export const DropdownMenu = styled.div`
       margin-right: 8px;
       color: var(--salmoon);
     }
+  }
+
+  @media screen and (max-width: 787px) {
+    top: 25%;
+    right: 0;
+    transform: translateX(300%);
+
+    visibility: visible;
+    opacity: 1;
   }
 `;

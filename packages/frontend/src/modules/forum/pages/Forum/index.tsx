@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import DefaultLayout from '@gComponents/_Layout/Default';
 import { Link } from 'react-router-dom';
 
@@ -7,7 +7,7 @@ import api from '@shared/services/api';
 import Yoda from '@assets/yoda.svg';
 
 import { useAuth } from '@shared/hooks/Auth';
-import MarkupParser from '@gComponents/MarkupParser';
+import dateFormatter from '@shared/utils/dateFormatter';
 import {
   Container,
   ContainerHeader,
@@ -24,154 +24,149 @@ import {
 
 interface Tags {
   id: string;
-  name: string;
+  tag: {
+    id: string;
+    name: string;
+  };
 }
 
 interface Topics {
   id: string;
   userId: string;
-  title: string;
-  description: string;
-  tags: string[];
-  tagsData: Tags[];
-  solved?: boolean;
-  engagment: {
-    views: number;
-    count: {
-      likes: number;
-      comments: number;
-    };
+  user: {
+    name: string;
   };
+  title: string;
+  text: string;
+  tags: Tags[];
+  views: number;
+  likesCount: number;
+  commentsCount: number;
   badge?: {
     label: string;
     labelClass: string;
   };
+  formattedDate: string;
+  created_at: string;
+}
+
+interface FilterTopics {
+  me?: string;
+  solved?: string;
 }
 
 const Forum: React.FC = () => {
-  const [tags, setTags] = useState([] as Tags[]);
   const [topics, setTopics] = useState([] as Topics[]);
-
-  const [filterTopics, setFilterTopics] = useState('');
+  const [filterTopics, setFilterTopics] = useState({} as FilterTopics);
+  const [loadingTopics, setLoadingTopics] = useState(true);
 
   const { user } = useAuth();
 
-  useEffect(() => {
-    api.get<Tags[]>(`tags`).then(response => {
-      setTags(response.data);
+  const loadTopics = useCallback(async () => {
+    setLoadingTopics(true);
+
+    const response = await api.get<Topics[]>(`topics/show`, {
+      params: {
+        ...filterTopics,
+      },
     });
-  }, []);
+    const topicsData = response.data.map(topic => {
+      const engagement = {
+        views: 0,
+        count: {
+          likes: 0,
+          comments: 0,
+        },
+      };
+
+      return {
+        ...topic,
+        formattedDate: dateFormatter(topic.created_at),
+        engagment: { ...engagement },
+      };
+    });
+
+    setTopics(topicsData);
+    setLoadingTopics(false);
+  }, [filterTopics]);
 
   useEffect(() => {
-    api.get<Topics[]>(`topics`).then(response => {
-      const topicsData = response.data.map(topic => {
-        const topicTags = tags.filter(tag => topic.tags.includes(tag.id));
-
-        return {
-          ...topic,
-          tagsData: topicTags || [],
-        };
-      });
-
-      let filter: Topics[] = topicsData;
-
-      if (filterTopics !== '') {
-        switch (filterTopics) {
-          case 'solved': {
-            filter = topicsData.filter(t => t.solved === true);
-            break;
-          }
-          case 'mytopics': {
-            filter = topicsData.filter(t => t.userId === user.id);
-            break;
-          }
-          case 'notsolvedyet': {
-            filter = topicsData.filter(t => t.solved !== true);
-            break;
-          }
-          default: {
-            filter = topicsData;
-            break;
-          }
-        }
-      }
-      console.log(filter);
-      setTopics(filter);
-    });
-  }, [tags, filterTopics, user.id]);
+    loadTopics();
+  }, [loadTopics]);
 
   return (
     <DefaultLayout>
-      <Container>
-        <ContainerHeader>
-          <YodaPlace>
-            <img src={Yoda} alt="Yoda! Bem vindo padawan" />
-          </YodaPlace>
-          <div>
-            <h3>Bem vindo Padawan, ao centro que seu é, de treinamentos!</h3>
-            <h3>Suas dúvidas tire, ao outros, sabiamente perguntando.</h3>
-          </div>
-        </ContainerHeader>
-        <Content>
-          <ForumTabs>
-            <FilterButton onClick={() => setFilterTopics('')}>
-              Todos
-            </FilterButton>
-            <FilterButton onClick={() => setFilterTopics('mytopics')}>
-              Meus tópicos
-            </FilterButton>
-            <FilterButton onClick={() => setFilterTopics('solved')}>
-              Resolvidos
-            </FilterButton>
-            <FilterButton onClick={() => setFilterTopics('notsolvedyet')}>
-              Não resolvidos
-            </FilterButton>
-          </ForumTabs>
-
-          <ForumTopics>
-            {topics.map(topic => (
-              <SingleTopic
-                key={topic.id}
-                className={
-                  topic.badge && topic.badge.label
-                    ? topic.badge.labelClass
-                    : 'no-label'
-                }
-                label={topic.badge && topic.badge.label}
+      {loadingTopics ? (
+        <h1>Carregando...</h1>
+      ) : (
+        <Container>
+          <ContainerHeader>
+            <YodaPlace>
+              <img src={Yoda} alt="Yoda! Bem vindo padawan" />
+            </YodaPlace>
+            <div>
+              <h3>Bem vindo Padawan, ao centro que seu é, de treinamentos!</h3>
+              <h3>Suas dúvidas tire, ao outros, sabiamente perguntando.</h3>
+            </div>
+          </ContainerHeader>
+          <Content>
+            <ForumTabs>
+              <FilterButton onClick={() => setFilterTopics({} as FilterTopics)}>
+                Todos
+              </FilterButton>
+              <FilterButton onClick={() => setFilterTopics({ me: user.id })}>
+                Meus tópicos
+              </FilterButton>
+              <FilterButton onClick={() => setFilterTopics({ solved: 'true' })}>
+                Resolvidos
+              </FilterButton>
+              <FilterButton
+                onClick={() => setFilterTopics({ solved: 'false' })}
               >
-                <MainContentTopic>
-                  <h2>
-                    <Link to={`topic/${topic.id}`}>{topic.title}</Link>
-                  </h2>
-                  <p>
-                    <MarkupParser
-                      source={`${topic.description.slice(
-                        0,
-                        180,
-                      )}... Continue lendo`}
-                    />
-                  </p>
-                  <Engagment>
-                    <li>{topic.engagment.count.comments || 0} respostas</li>
-                    <li>{topic.engagment.count.likes || 0} curtidas</li>
-                    <li>{topic.engagment.views || 0} visualizações</li>
-                  </Engagment>
-                </MainContentTopic>
-                <Tags>
-                  <h2>Tags</h2>
-                  <ul>
-                    {topic.tagsData.map(tag => (
-                      <li key={tag.id}>
-                        <a href="#/">{tag.name}</a>
-                      </li>
-                    ))}
-                  </ul>
-                </Tags>
-              </SingleTopic>
-            ))}
-          </ForumTopics>
-        </Content>
-      </Container>
+                Não resolvidos
+              </FilterButton>
+            </ForumTabs>
+
+            <ForumTopics>
+              {topics.map(topic => (
+                <SingleTopic
+                  key={topic.id}
+                  className={
+                    topic.badge && topic.badge.label
+                      ? topic.badge.labelClass
+                      : 'no-label'
+                  }
+                  label={topic.badge && topic.badge.label}
+                >
+                  <MainContentTopic>
+                    <Link to={`topic/${topic.id}`}>
+                      <h2>{topic.title}</h2>
+                      <h3>{topic.user.name}</h3>
+                      <small>{topic.formattedDate}</small>
+                    </Link>
+                    <Engagment>
+                      <li>{topic.commentsCount || 0} respostas</li>
+                      <li>{topic.likesCount || 0} curtidas</li>
+                      <li>{topic.views || 0} visualizações</li>
+                    </Engagment>
+                  </MainContentTopic>
+                  <Tags>
+                    <h2>Tags</h2>
+                    <ul>
+                      {topic.tags &&
+                        topic.tags.map(tag => (
+                          <li key={tag.tag.id}>
+                            <a href="#/">{tag.tag.name}</a>
+                          </li>
+                        ))}
+                    </ul>
+                  </Tags>
+                </SingleTopic>
+              ))}
+            </ForumTopics>
+          </Content>
+        </Container>
+      )}
     </DefaultLayout>
   );
 };

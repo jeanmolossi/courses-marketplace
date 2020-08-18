@@ -42,12 +42,21 @@ export const ForumTabs = styled.div`
 
   grid-column-gap: 15px;
   padding-left: 24px;
+
+  @media screen and (max-width: 787px) {
+    overflow-x: auto;
+    padding-bottom: 16px;
+  }
 `;
 
 export const FilterButton = styled.button.attrs({ type: 'button' })`
   color: #fff;
   background: none;
   border: none;
+
+  @media screen and (max-width: 787px) {
+    flex-shrink: 0;
+  }
 `;
 
 export const ForumTopics = styled.div`
@@ -94,6 +103,15 @@ export const SingleTopic = styled.div<SingleTopicProps>`
         background: #FFF176;
       }
     `}
+
+  @media screen and (max-width: 787px) {
+    flex-direction: column;
+    padding-left: 15px;
+
+    &:before {
+      top: -48px;
+    }
+  }
 `;
 
 export const MainContentTopic = styled.div`
@@ -101,8 +119,15 @@ export const MainContentTopic = styled.div`
   display: flex;
   flex-direction: column;
 
-  > h2 > a {
+  > a > h2 {
     color: #fff176;
+    margin-bottom: 16px;
+  }
+
+  > a > h3,
+  > a > small {
+    opacity: 0.8;
+    margin: 4px 0;
   }
 `;
 
@@ -117,6 +142,11 @@ export const Engagment = styled.ul`
 
   background: #d4d4d4;
   color: var(--darkBg);
+
+  @media screen and (max-width: 787px) {
+    flex-direction: column;
+    align-items: center;
+  }
 `;
 
 export const Tags = styled.div`
@@ -175,5 +205,12 @@ export const Tags = styled.div`
         border-radius: 8px;
       }
     }
+  }
+
+  @media screen and (max-width: 787px) {
+    width: 100%;
+
+    margin-left: 0;
+    flex-direction: column;
   }
 `;

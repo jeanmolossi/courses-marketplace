@@ -10,6 +10,11 @@ export const Container = styled.div`
   grid-column-gap: 24px;
 
   padding-top: 12px;
+
+  @media screen and (max-width: 787px) {
+    width: 100%;
+    flex-direction: column-reverse;
+  }
 `;
 
 export const Content = styled.div`
@@ -17,4 +22,9 @@ export const Content = styled.div`
 
   flex: 1;
   padding-bottom: 86px;
+
+  @media screen and (max-width: 787px) {
+    padding-bottom: 16px;
+    flex-direction: column-reverse;
+  }
 `;

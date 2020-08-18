@@ -4,6 +4,8 @@ import React, {
   useContext,
   useCallback,
   useState,
+  Dispatch,
+  SetStateAction,
 } from 'react';
 
 import api from '@shared/services/api';
@@ -16,7 +18,13 @@ interface LoginData {
 interface User {
   id: string;
   name: string;
-  avatar: string;
+  email?: string;
+  status?: 'Online' | 'Offline';
+  avatarURL: string;
+}
+
+interface SessionData {
+  user: User;
   token: string;
 }
 
@@ -24,6 +32,7 @@ interface AuthContextData {
   signIn(data: LoginData): Promise<void>;
   signOut(): void;
   user: User;
+  setUser: Dispatch<SetStateAction<User>>;
 }
 
 const authContext = createContext<AuthContextData>({} as AuthContextData);
@@ -31,31 +40,41 @@ const authContext = createContext<AuthContextData>({} as AuthContextData);
 const AuthProvider: React.FC = ({ children }) => {
   const [user, setUser] = useState<User>(() => {
     const hasUser = localStorage.getItem('@CodeLearnMarketplace:user');
-    if (hasUser) return JSON.parse(hasUser);
+    let token = localStorage.getItem('@CodeLearnMarketplace:token');
+
+    if (!token) return {} as User;
+
+    token = JSON.parse(token);
+
+    if (hasUser) {
+      api.defaults.headers.authorization = `Bearer ${token}`;
+      return JSON.parse(hasUser);
+    }
 
     return {} as User;
   });
 
   const signIn = useCallback(async ({ email, password }) => {
-    const response = await api.get<User[]>(`users`, {
-      params: {
-        email,
-        password,
-      },
+    const response = await api.post<SessionData>(`sessions/create`, {
+      email,
+      password,
     });
 
-    const userData = response.data[0];
-    if (!response.data.length) throw new Error('You cannot login');
+    const { user: userdata, token } = response.data;
+    if (!response.data) throw new Error('You cannot login');
+
+    api.defaults.headers.authorization = `Bearer ${token}`;
 
     localStorage.setItem(
       '@CodeLearnMarketplace:user',
-      JSON.stringify(userData),
+      JSON.stringify(userdata),
     );
+    localStorage.setItem('@CodeLearnMarketplace:token', JSON.stringify(token));
     setUser({
-      id: userData.id,
-      name: userData.name,
-      avatar: userData.avatar,
-      token: userData.token,
+      id: userdata.id,
+      name: userdata.name,
+      avatarURL: userdata.avatarURL,
+      status: 'Online',
     });
   }, []);
 
@@ -66,6 +85,7 @@ const AuthProvider: React.FC = ({ children }) => {
 
   const contextValues = useMemo(() => {
     return {
+      setUser,
       signIn,
       signOut,
     };

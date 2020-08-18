@@ -39,6 +39,7 @@ const Input: React.FC<InputProps> = ({
   helpText,
   containerStyle = {},
   type = 'text',
+  placeholder,
   ...rest
 }) => {
   const inputRef = useRef({} as HTMLInputElement);
@@ -68,6 +69,12 @@ const Input: React.FC<InputProps> = ({
     return uuid();
   }, [forId]);
 
+  const usePlaceholder = useMemo(() => {
+    if (placeholder) return placeholder;
+
+    return `Digite ${label}...`;
+  }, [label, placeholder]);
+
   const { defaultValue, fieldName, registerField, error } = useField(name);
 
   useEffect(() => {
@@ -94,6 +101,7 @@ const Input: React.FC<InputProps> = ({
           name={name}
           type={type}
           id={htmlFor}
+          placeholder={usePlaceholder}
           {...rest}
         />
 

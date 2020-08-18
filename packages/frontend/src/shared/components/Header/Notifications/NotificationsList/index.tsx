@@ -19,6 +19,7 @@ import ptBR from 'date-fns/locale/pt-BR';
 import api from '@shared/services/api';
 import { useAuth } from '@shared/hooks/Auth';
 
+import { useSocket } from '@shared/hooks/Socket';
 import {
   Container,
   SingleNotification,
@@ -52,13 +53,14 @@ const NotificationsList: React.FC<NotificationListProps> = ({
   onHasNotification,
 }) => {
   const { user } = useAuth();
+  const { socket } = useSocket();
 
   const [notifications, setNotifications] = useState([] as NotificationProps[]);
 
   const handleMarkAsRead = useCallback(
     ({ id, read }) => {
       api
-        .patch<NotificationProps[]>(`notification/${id}`, { read: !read })
+        .put<NotificationProps[]>(`notifications/update`, { id, read })
         .then(_ => {
           const notificationsReloaded = notifications.map(n => {
             if (n.id === id) {
@@ -83,29 +85,42 @@ const NotificationsList: React.FC<NotificationListProps> = ({
   );
 
   useEffect(() => {
-    api
-      .get<NotificationProps[]>(`notification`, { params: { userId: user.id } })
-      .then(response => {
-        const notificationFormatted = response.data.map(n => {
-          const parsedDate = parseISO(n.created_at);
-          return {
-            ...n,
-            formattedDate: formatDistance(parsedDate, new Date(), {
-              addSuffix: true,
-              locale: ptBR,
-            }),
-          };
-        });
-        setNotifications(notificationFormatted);
-
-        const hasNotificationsUnread = notificationFormatted.find(
-          n => n.read !== true,
-        );
-
-        if (hasNotificationsUnread) onHasNotification(1);
-        else onHasNotification(0);
+    api.get<NotificationProps[]>(`notifications/me`).then(response => {
+      const notificationFormatted = response.data.map(n => {
+        const parsedDate = parseISO(n.created_at);
+        return {
+          ...n,
+          formattedDate: formatDistance(parsedDate, new Date(), {
+            addSuffix: true,
+            locale: ptBR,
+          }),
+        };
       });
+      setNotifications(notificationFormatted);
+
+      const hasNotificationsUnread = notificationFormatted.find(
+        n => n.read !== true,
+      );
+
+      if (hasNotificationsUnread) onHasNotification(1);
+      else onHasNotification(0);
+    });
   }, [user.id, onHasNotification]);
+
+  useEffect(() => {
+    socket.on('@notification:create', (payload: NotificationProps) => {
+      const parsedDate = parseISO(payload.created_at);
+      const parsedNotification: NotificationProps = {
+        ...payload,
+        formattedDate: formatDistance(parsedDate, new Date(), {
+          addSuffix: true,
+          locale: ptBR,
+        }),
+      };
+
+      setNotifications([parsedNotification, ...notifications]);
+    });
+  }, [socket, notifications]);
 
   return (
     <Container>
